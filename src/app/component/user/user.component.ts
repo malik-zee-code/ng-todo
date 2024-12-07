@@ -1,25 +1,19 @@
-import {
-  Component,
-  computed,
-  EventEmitter,
-  Input,
-  Output,
-  signal,
-} from '@angular/core';
-import { DUMMY_USERS } from '../../lib/constant/dummy-user';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { User } from '../../lib/types/type';
+import { CardComponent } from '../../shared/card/card.component';
 
 // let random = Math.floor(Math.random() * DUMMY_USERS.length);
 
 @Component({
   selector: 'app-user',
   standalone: true,
-  imports: [],
+  imports: [CardComponent],
   templateUrl: './user.component.html',
   styleUrl: './user.component.css',
 })
 export class UserComponent {
   @Input({ required: true }) user!: User;
+  @Input() selected!: boolean;
   @Output() select = new EventEmitter<string>();
 
   // selectedUser = signal(DUMMY_USERS[random]);
